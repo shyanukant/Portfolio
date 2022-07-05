@@ -1,0 +1,30 @@
+{
+    "parameter":
+    {
+        "local_server" : "True",
+        "local_uri" : "mysql://root:@localhost/shyanukant_portfolio",
+        "production_uri" : "mysql://root:@localhost/shyanukant_portfolio",
+
+        "web_name" : "Shyanukant",
+        
+        "fb_url" : "https://www.facebook.com/shyanukant",
+        "insta_url" : "https://www.instagram.com/shyanukant",
+        "tw_url" : "https://www.twitter.com/shyanukant",
+        "lind_url" : "https://www.linkedin.com/shyanukant",
+        "git_url" : "https://www.github.com/Shyanukant",
+
+        "gmail-user" : "shyanukantrathi51@gmail.com",
+        "gmail-pass" : "yourpassword",
+        
+        "no-of-project" : 10,
+        "login_image" : "login.png",
+
+        "admin_user" : "shyanukant",
+        "admin_password" : "userpassword",
+
+        "upload_location" : "C:\\Users\\admin\\Desktop\\Python\\MY Portfolio\\static\\images\\contact_file",
+        "upload_location2" : "C:\\Users\\admin\\Desktop\\Python\\MY Portfolio\\static\\images\\upload_file"
+    }
+
+
+}

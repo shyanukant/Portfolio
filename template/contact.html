@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{% block body %}
+<body>
+    <p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert show alert-{{category}}" id="alert">
+            <strong>{{ message }}</strong>
+            <span><img src="{{url_for('static', filename='images/close.png')}}" id="a-close" alt="close" class="alert-close"></span>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </p>
+    <main>
+        
+        <div class="contactform">
+            
+            <h1 class="f-design1 m-left">Contact me for Work/ Genral Enquiries</h1>
+            <form action="/contact" method="post" enctype="multipart/form-data">
+                <div class="form-fill t-b-padding">
+                    <label for="clientname" class="f-design2 f-size-3">Name </label>
+                    <input type="text" class="form-control" name="name" required>
+                </div>
+                <div class="form-fill t-b-padding">
+                    <label for="clientmail" class="f-design2 f-size-3">Email Address </label>
+                    <input type="email" class="form-control" name="email" required>
+                </div>
+                <div class="form-fill t-b-padding">
+                    <label for="clientphone" class="f-design2 f-size-3">Phone </label>
+                    <input type="phone" class="form-control" name="phone">
+
+                </div>
+                <div class="form-fill t-b-padding">
+                    <label for="clientmessage" class="f-design2 f-size-3" >Message</label>
+                    <textarea class="form-control-m" name="message" required></textarea>
+                </div>
+                <div class="form-fill t-b-padding">
+                    <label for="upload " class="upload " style="width: 15vw;">
+                        <input type="file" name="file">
+                    </label>
+                </div>
+                <!-- <div class="f-size-3 t-b-padding"> -->
+
+                    <!-- <input type="checkbox" class="check-box pointer"> -->
+                    <!-- <label for="check-box" class="f-design2">I want you to work on a project with me </label> -->
+                <!-- </div> -->
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+{% endblock %}

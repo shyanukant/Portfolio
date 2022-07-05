@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&family=Syne+Mono&display=swap');
+:root{
+    --font1: 'Maven Pro', sans-serif;
+    --font2:'Syne Mono', monospace;
+}
+:root{
+    --color-1:#c188fd;
+    --color-2:#ad6bf3;
+    --color-3:white;
+    --color-4:black;
+}
+
+.s-height{
+    width: 4vh;
+}
+.l-width{
+    width: 80vw;
+}
+.l-height{
+    height: 40vh;
+}
+.m-auto{
+    margin: auto;
+    width: 80vw;
+}
+.m-auto1{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 15vw;
+}
+.m-left{
+    margin-left: 6vw;
+}
+.m-top{
+    margin-top: 15vh;
+}
+.font-design{
+    text-align: center;
+    margin-top: 18px;
+    font-family: var(--font2);
+}
+.f-design1{
+    color: var(--color-1);
+    font-family: var(--font2);
+    text-decoration: none;
+    letter-spacing: -0.069em;
+    line-height: 2;
+}
+.f-design2{
+    color: var(--color-3);
+    font-family: var(--font1);
+    text-decoration: none;
+}
+.f-design3{
+    color: var(--color-1);
+    font-family: var(--font2);
+    text-decoration: none;
+    letter-spacing: -0.069em;
+    line-height: 2;
+    text-align: center;
+}
+.f-size-1{
+    font-size: 3em;
+    font-family: var(--font1);
+    
+}
+.f-size-2{
+    font-size: 2em;
+    color: var(--color-1);
+    font-family: var(--font2);
+    letter-spacing: -0.047em;
+
+}
+.f-size-3{
+    font-size: 1.6em;
+}
+.t-b-padding{
+    padding: 13px 0;
+}
+.check-box{
+    width: 25px;
+}
+.pointer{
+    cursor: pointer;
+}
+.upload{
+    display: inline-block;
+    background-color: var(--color-2);
+    color: var(--color-3);
+    padding: 0.5rem;
+    font-family: var(--font1);
+    border-radius: 0.3rem;
+    
+  }
+.alert-success{
+    background-color: rgb(4, 211, 4);
+    border-left: 15px solid green;
+}
+.alert-error{
+    
+    background-color: rgb(252, 57, 4);
+    border-left: 15px solid rgb(206, 6, 6);
+}

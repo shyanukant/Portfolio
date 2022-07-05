@@ -1,0 +1,45 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/sytle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/reponsive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/effect.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/utils.css') }}">
+
+</head>
+
+<body>
+    <main>
+        
+        <a href="/dashboard"><button>Dashboard Home</button></a>
+        <a href="/logout"><button>LogOut</button></a>
+        <div class="dashboard">
+            
+            <h1 class="f-design1 ">Add / Edit Post</h1>
+            
+            <form action="/edit/{{sno}}" method="post">
+                <div class="form-fill t-b-padding">
+                    <label for="title" class="f-design2 f-size-3">Title </label>
+                    <input type="text" class="form-control l-width s-height" name="title" value="{{project.title}}">
+                </div>
+                <div class="form-fill t-b-padding">
+                    <label for="postSlug" class="f-design2 f-size-3">Slug </label>
+                    <input type="text" class="form-control l-width s-height" name="slug" value="{{project.slug}}">
+                </div>
+                <div class="form-fill t-b-padding">
+                    <label for="content" class="f-design2 f-size-3">Content</label>
+                    <textarea class="form-control-m l-width l-height" name="content">{{project.content}}</textarea>
+                </div>
+                <div class="form-fill t-b-padding">
+                    <label for="imgaeUpload" class="f-design2 f-size-3">Image File</label>
+                    <input type="text" class="form-control" name="image" value="{{project.img_file}}"> 
+                    
+                </div>
+                <br><br>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </main>
+
+</body>

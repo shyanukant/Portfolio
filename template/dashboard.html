@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/sytle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/reponsive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/effect.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/utils.css') }}">
+
+</head>
+<body>
+   
+    <main>
+        
+        <div class="myproject">
+            <h1>Basic Actions</h1>
+
+            <a href="/edit/0"><button>Add New Post</button></a>
+            <a href="/logout"><button>LogOut</button></a>
+            <br>
+            <hr class="m-auto"><br>
+        </div>
+        
+        <div class="dashboard">
+            <h1>Upload File </h1>
+            <form action="/uploader", method="post" enctype="multipart/form-data">
+                <label for="upload" class="upload">
+                    <input type="file" name="file">
+                </label>
+                <button>Submit</button>
+            </form>
+            <table>
+                <caption class="f-design3 f-size-2"> Your Post</caption>
+                <thead class="t-b-padding f-design1">
+                    <tr class="form-control f-size-3">
+                        <th>Sno</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody class="t-b-padding f-design2">
+                    {% for project in projects %}
+                    <tr class="form-control f-size-3">
+                        <td>{{project.Sno}}</td>
+                        <td>{{project.title}}</td>
+                        <td>{{project.date}}</td>
+                        <td><a href="/edit/{{project.Sno}}"><button>Edit</button></a></td>
+                        <td><a href="/delete/{{project.Sno}}"><button>Delete</button></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+    
+</body>
+</html>

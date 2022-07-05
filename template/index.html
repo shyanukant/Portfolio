@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block body %}
+<body>
+   
+    <main>
+        <div class="infocontainer">
+            <div class="myinfo">
+                <div class="f-size-1">Hello I am </div>
+                <div class="f-size-1">Shyanukant Rathi</div>
+                <div class="f-size-2">CS Enthusiastic, Go-getter, Self-Learner</div>
+                <div class="aboutmore">I am a Beginner Developer, Designer with Computer science degree. Passionate
+                    about upcoming technology and love to learn and explore.</div>
+                <div class="buttons">
+                    <a href="{{ url_for('static', filename='/cv.txt') }}"><button>Download CV</button></a>
+                    <a href="/contact"><button>Contact Me</button></a>
+                </div>
+            </div>
+            <div class="mypic">
+                <img src="{{url_for('static', filename='images/shyanukant.png')}}" alt="shyanukant">
+            </div>
+        </div>
+        <hr class="m-auto">
+        <h2 class="font-design">PROJECT</h2>
+        <div class="myproject">
+            {% for project in projects %}
+            {% set fname = 'images/' + project.img_file %}
+            <div class="p-detail">
+                <a  href="/project/{{project.slug}}"><img class="p-img" src="{{url_for('static', filename=fname)}}" alt=""></a>
+                <a href="/project/{{project.slug}}" class="f-design1"><h3 >{{project.title}}</h3></a>
+                <a href="/project/{{project.slug}}" class="f-design2"><p> {{project.content[0:50]}}...
+                </p></a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    
+</body>
+
+{% endblock %}

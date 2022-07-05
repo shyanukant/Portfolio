@@ -1,0 +1,162 @@
+@media (max-width:900px) {
+    .intro-blogcontainer{
+        padding: 142px 0 24px 80px;
+    }
+    .mypic img{
+        width: 300px;
+    }
+}
+@media (max-width: 800px) {
+    .infocontainer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 272px auto 230px;
+    }
+    .myinfo{
+        width: 70vw;
+        margin-top: 70px;
+    }
+    
+} 
+
+@media (max-width: 700px){
+    .container{
+        display: flex;
+        height: 0vh;
+    }
+    .main{
+        height: 85vh;
+    }
+   .head-form{
+       display: block;
+   }
+   
+   .effect:hover::before{
+       transition: none;
+   }
+    .headerbar{
+        position:absolute;
+        background-color:var(--color-2);
+        width: 185px;
+        height: 100vh;
+        transition: transform 0.3s ease-in;
+        align-items: baseline;
+    }
+    .headerbar nav{
+        padding: 45px ;
+    }
+    .menubar{
+        position: absolute;
+        cursor: pointer;
+        top: 10px;
+        left: 10px;
+        visibility: visible;
+    }
+    .headerbargo{
+        transform: translate(-275px,0);
+        position: absolute;
+    }
+    .shape3::before{
+        width: 0;
+    }
+  
+    .open{
+        width: 25px;
+        padding: 7px;
+    }
+
+    .close{
+        width: 22px;
+        margin-left: 187px;
+        padding: 7px 0;
+    }
+    li{
+        list-style: none;
+        padding: 4vh 0;
+        font-size: 20px;
+        margin: 35px -17px;
+    }
+    li a{
+        text-decoration: none;
+        color: black;
+    }
+    
+    
+    button{
+        margin: 5px;
+        padding: 15px;
+    }
+    .infocontainer{
+        margin: 272px auto 252px;
+    }
+    
+    .myinfo{
+        font-size: 0.9em;
+        margin-top: 0;
+    }
+    
+    .contactform{
+        padding: 64px 0 0 80px;
+        font-size: 0.9em;
+    }
+    .form-control{
+        width: 45vw;
+    }
+    .form-control-m{
+        width: 45vw;
+    }
+    
+    .intro-blogcontainer{
+        padding: 21px 35px;
+    }
+    .para{
+        padding: 10px 7px;
+    }
+    .social{
+        width: 8vw;
+    }
+    
+}
+@media (max-width: 400px){
+    .p-detail{
+        width: 250px;
+        height: 350px;
+    }
+    .p-img{
+        width: 250px;
+        height: 250px;
+    }
+    .myproject{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    button{
+        margin: 4px;
+        padding: 10px;
+    }
+    .contactform{
+        padding: 64px 0 0 40px;
+        font-size: 0.8em;
+
+    }
+    .myinfo{
+        font-size: 0.8em;
+    }
+   
+    .form-control{
+        width: 50vw;
+    }
+    .form-control-m{
+        width: 50vw;
+    }
+    
+    .intro-blogcontainer{
+        padding: 21px 21px;
+    }
+    .social{
+        width: 12vw;
+        margin:1vw
+    }
+}

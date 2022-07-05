@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+<!-- {% set fname = 'images/' + project.img_file %} -->
+<div class="intro-blogcontainer">
+    <div class="phead" style="background-image: url(/static/images/{{project.img_file}});">
+        
+        <h2 class="f-design3">{{ project.title }}</h2>
+        <h4 class="para">Here is Sub-Title</h4>
+        <span class="para f-design2">Date - {{ project.date }}</span><br>
+        <button class="projectbutton">More</button>
+
+    </div>
+    <div class="data">
+        <p class="para f-design2">
+            {{ project.content }}
+        </p>
+    </div>
+</div>
+
+
+<!-- footer -->
+{% endblock %}

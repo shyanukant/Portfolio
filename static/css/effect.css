@@ -1,0 +1,93 @@
+.effect::before{
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    height: 50px;
+    transition: .2s linear;
+    
+}
+.effect:hover::before{
+    border-radius: 10%;
+    border-top: 4px solid;
+    border-bottom: 4px solid;
+    color: var(--color-2);
+}
+.shape1::before{
+
+    width: 92px;
+    margin: -11px -11px;
+}
+.shape2::before{
+    width: 123px;
+    margin: -11px -10px;
+}
+.shape3::before{
+    width: 165px;
+    margin: -11px -8px;
+}
+li a:hover{
+    color: var(--color-3);
+    font-style: italic;
+}
+
+button:hover{
+    background-color: var(--color-1);
+    color: var(--color-4);
+
+}
+.social::before,
+.social::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: .3s linear;
+}
+.social:hover::before{
+    border-left: 4px solid;
+    border-right: 4px solid;
+    border-radius: 50%;
+    transform: skewX(15deg);
+    color: var(--color-3);
+}
+.social:hover::after{
+    border-left: 4px solid;
+    border-right: 4px solid;
+    border-radius: 50%;
+    transform: skewY(-10deg);
+    /* color: var(--color-2); */
+}
+
+.insta:hover::after{
+    color: rgb(255, 0, 191);
+}
+.ml:hover::after{
+    color: red;
+}
+.git:hover::after{
+    color: aqua;
+}
+.social:hover .iconName{
+    top: -30px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+.social:hover .facebook{
+    fill: rgb(54, 118, 255);
+}
+.social:hover .instagram{
+    fill: rgb(251, 51, 201);
+}
+.social:hover .twitter{
+    fill: rgb(5, 163, 255);
+}
+.social:hover .mail{
+    fill: rgb(255, 73, 73);
+}
+.social:hover .linkedin{
+    fill:  #0072b1;
+}
+.social:hover .github{
+    fill: aqua;
+}

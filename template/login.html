@@ -1,0 +1,37 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/sytle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/reponsive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/effect.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/utils.css') }}">
+   
+</head>
+<body>
+    <main>
+        <div class="dashboard m-top">
+            {% set fname = 'images/'+ params['login_image'] %}
+            <img src="{{url_for('static', filename=fname)}}" alt="login">
+            <h1 class="f-design1 ">Admin LogIn </h1>
+            <form action="/dashboard" method="post">
+                
+                <div class="form-fill t-b-padding">
+                    <label for="username" class="f-design2 f-size-3">Username </label>
+                    <input type="text" class="form-control" name="username">
+                </div>
+                <div class="form-fill t-b-padding">
+                    <label for="userpass" class="f-design2 f-size-3">Password </label>
+                    <input type="password" class="form-control" name="userpass">
+                </div>
+                 <div class="f-size-3 t-b-padding">
+
+                    <input type="checkbox" class="check-box pointer">
+                    <label for="check-box" class="f-design2">Remember Me </label>
+                </div>
+                <button type="submit" class="submit-btn m-auto1">LOGIN</button>
+            </form>
+        </div>
+    </main>
+
+</body>
