@@ -7,13 +7,13 @@ import json
 import os 
 
 
-# add mySQL database 
+# add database 
 with open('config.json', 'r') as f:   # open config.json in readind mode
     params = json.load(f)["parameter"]
-local_server = True
+# local_server = True
 app = Flask(__name__, template_folder='template')
 # set secret key
-app.secret_key = 'sublesh-roshan'
+# app.secret_key = 'sublesh-roshan'
 # configuring flask mail
 app.config.update(
     MAIL_SERVER = "smtp.gmail.com",
@@ -24,12 +24,12 @@ app.config.update(
     MAIL_PASSWORD = params['gmail-pass']
 )
 mail = Mail(app)
-if(local_server):
-    app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
-    app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
-else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = params['production_uri']
-    app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
+# if(local_server):
+#     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
+#     app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
+# else:
+app.config['SQLALCHEMY_DATABASE_URI'] = params['production_uri']
+app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 
 
 app.config['UPLOAD_FOLDER'] = params['upload_location'] # location of contact file
@@ -125,7 +125,7 @@ def Contact_view():
     return render_template("contact.html", title=title, params= params)
 
 ###################################### ###############  #################################################
-###################################### dashboard pages  #################################################
+###################################### admin pages  #################################################
 
 
 @app.route("/edit/<string:sno>", methods = ['GET', 'POST'])
@@ -163,14 +163,14 @@ def uploader():
             f = request.files['file']
             f.save(os.path.join(app.config['UPLOAD_FOLDER2'], secure_filename(f.filename) )) # save upload file in location with file name
             # flash('Upload Succesfully, file= {}'.format(f), 'success')
-            return redirect("/dashboard")
+            return redirect("/admin")
 
-@app.route("/dashboard", methods = ['GET', 'POST'])
-def dashboard():
+@app.route("/admin", methods = ['GET', 'POST'])
+def admin():
     # if user already login
     if 'user' in session and session['user'] == params['admin_user']:
-        projects = project_post.query.all() #show all post in dashboard
-        return render_template('dashboard.html', params=params, projects = projects)
+        projects = project_post.query.all() #show all post in admin
+        return render_template('admin.html', params=params, projects = projects)
 
     if request.method == 'POST':  #post request from user for enter in admin panel
         #REDIRECT TO ADMIN PANNEL and check username and password 
@@ -181,14 +181,14 @@ def dashboard():
             # set the session variable here
             session['user'] = username
             projects = project_post.query.all()
-            return render_template('dashboard.html', params= params, projects = projects)
+            return render_template('admin.html', params= params, projects = projects)
     # else:
     return render_template("login.html", params = params)
 
 @app.route("/logout")
 def logout():
     session.pop('user')
-    return redirect('/dashboard')
+    return redirect('/admin')
 
 @app.route("/delete/<string:sno>", methods = ['GET', 'POST'])
 def delete(sno):
@@ -196,7 +196,8 @@ def delete(sno):
         project = project_post.query.filter_by(Sno = sno).first()
         db.session.delete(project) # delete project
         db.session.commit()
-    return redirect('/dashboard')
+    return redirect('/admin')
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    app.run(port=8000)
+    # app.run(debug=True, port=8000)
