@@ -1,4 +1,3 @@
-from operator import imod
 from flask import Flask, render_template, request, flash, redirect, session 
 from datetime import datetime
 from werkzeug.utils import secure_filename
@@ -203,5 +202,5 @@ def delete(sno):
     return redirect('/admin')
 
 if __name__ == "__main__":
-    app.run(port=8000)
-    # app.run(debug=True, port=8000)
+    # app.run(port=8000)
+    app.run(debug=True, port=8000)
