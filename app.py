@@ -1,16 +1,19 @@
+from operator import imod
 from flask import Flask, render_template, request, flash, redirect, session 
 from datetime import datetime
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail   # send mail using flsk mail for more https://pythonhosted.org/Flask-Mail/
+from dotenv import load_dotenv
 import json
 import os 
 
+load_dotenv()
 
 # add database 
 with open('config.json', 'r') as f:   # open config.json in readind mode
     params = json.load(f)["parameter"]
-# local_server = True
+local_server = 'prod'
 app = Flask(__name__, template_folder='template')
 # set secret key
 # app.secret_key = 'sublesh-roshan'
@@ -20,15 +23,16 @@ app.config.update(
     MAIL_PORT = "465",
     MAIL_USE_SSL = True,
     MAIL_ASCII_ATTACHMENTS = True,
-    MAIL_USERNAME = params['gmail-user'],
-    MAIL_PASSWORD = params['gmail-pass']
+    # MAIL_USERNAME = params['gmail-user'],
+    MAIL_USERNAME = os.getenv("GMAIL_PASS"),
+    MAIL_PASSWORD = os.getenv("GMAIL_USER")
+    # MAIL_PASSWORD = params['gmail-pass']
 )
 mail = Mail(app)
-# if(local_server):
-#     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
-#     app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
-# else:
-app.config['SQLALCHEMY_DATABASE_URI'] = params['production_uri']
+if(local_server=='dev'):
+    app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 
 
@@ -130,7 +134,7 @@ def Contact_view():
 
 @app.route("/edit/<string:sno>", methods = ['GET', 'POST'])
 def edit(sno):
-    if 'user' in session and session['user'] == params['admin_user']:
+    if 'user' in session and session['user'] == os.getenv("ADMIN_USER"):
         if request.method == 'POST':
             title = request.form.get('title')
             slug = request.form.get('slug')
@@ -158,7 +162,7 @@ def edit(sno):
 
 @app.route("/uploader", methods = ['GET', 'POST'])
 def uploader():
-    if 'user' in session and session['user']== params['admin_user']:
+    if 'user' in session and session['user']== os.getenv("ADMIN_USER"):
         if request.method == 'POST':
             f = request.files['file']
             f.save(os.path.join(app.config['UPLOAD_FOLDER2'], secure_filename(f.filename) )) # save upload file in location with file name
@@ -168,7 +172,7 @@ def uploader():
 @app.route("/admin", methods = ['GET', 'POST'])
 def admin():
     # if user already login
-    if 'user' in session and session['user'] == params['admin_user']:
+    if 'user' in session and session['user'] == os.getenv("ADMIN_USER"):
         projects = project_post.query.all() #show all post in admin
         return render_template('admin.html', params=params, projects = projects)
 
@@ -177,7 +181,7 @@ def admin():
         username = request.form.get('username')
         userpass = request.form.get('userpass')
 
-        if (username == params['admin_user'] and userpass == params['admin_password']):
+        if (username == os.getenv("ADMIN_USER") and userpass == os.getenv("ADMIN_PASSWORD")):
             # set the session variable here
             session['user'] = username
             projects = project_post.query.all()
@@ -192,7 +196,7 @@ def logout():
 
 @app.route("/delete/<string:sno>", methods = ['GET', 'POST'])
 def delete(sno):
-    if 'user' in session and session['user'] == params['admin_user']:
+    if 'user' in session and session['user'] == os.getenv("ADMIN_USER"):
         project = project_post.query.filter_by(Sno = sno).first()
         db.session.delete(project) # delete project
         db.session.commit()

@@ -1,8 +1,6 @@
 {
     "parameter":
     {
-        "production_uri" : "postgres://rnakykegnrftcy:eda37649913e7f50f73a8757377c7fb22c33170daba4cc96ae048a2f41f47749@ec2-54-163-34-107.compute-1.amazonaws.com:5432/d6t9dh6krfr4uc",
-
         "web_name" : "Shyanukant",
         
         "fb_url" : "https://www.facebook.com/shyanukant",
@@ -10,15 +8,9 @@
         "tw_url" : "https://www.twitter.com/shyanukant",
         "lind_url" : "https://www.linkedin.com/in/shyanukant/",
         "git_url" : "https://www.github.com/Shyanukant",
-
-        "gmail-user" : "shyanukantrathi51@gmail.com",
-        "gmail-pass" : "dfkszimkditegiao",
         
         "no-of-project" : 10,
         "login_image" : "login.png",
-
-        "admin_user" : "shyanukant",
-        "admin_password" : "S&R@pril56",
 
         "upload_location" : "\\static\\images\\contact_file",
         "upload_location2" : "\\static\\images\\upload_file"
