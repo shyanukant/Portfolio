@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, flash, redirect, session 
+from flask import Flask, render_template, request, flash, redirect,session
 from datetime import datetime
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate 
 from flask_mail import Mail   # send mail using flsk mail for more https://pythonhosted.org/Flask-Mail/
 from dotenv import load_dotenv
 from pathlib import Path
@@ -25,20 +26,21 @@ app.config.update(
     MAIL_USE_SSL = True,
     MAIL_ASCII_ATTACHMENTS = True,
     # MAIL_USERNAME = params['gmail-user'],
-    MAIL_USERNAME = os.getenv("GMAIL_PASS"),
-    MAIL_PASSWORD = os.getenv("GMAIL_USER")
+    MAIL_USERNAME = os.getenv("GMAIL_USER"),
+    MAIL_PASSWORD = os.getenv("GMAIL_PASS")
     # MAIL_PASSWORD = params['gmail-pass']
 )
 mail = Mail(app)
 if(local_server=='dev'):
     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
+    app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 else:
     prodURI = os.getenv("DATABASE_URL")
     prodURI = prodURI.replace("postgres://", "postgresql://")
     app.config['SQLALCHEMY_DATABASE_URI'] = prodURI
     app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 
-
+# data store folder
 app.config['UPLOAD_FOLDER'] = params['upload_location'] # location of contact file
 app.config['UPLOAD_FOLDER2'] = params['upload_location2'] # location of upload file
 #
@@ -49,11 +51,13 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 # connect with database
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 # contact form table data
 class Contact(db.Model):
+    __tablename__ = 'contact'
     Sno = db.Column (db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=False, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=False, nullable=False)
     phone = db.Column(db.String(12), nullable=False)
     message = db.Column(db.String(250),  nullable=True)
     file = db.Column(db.String(30),  nullable=True)
@@ -61,6 +65,7 @@ class Contact(db.Model):
 
 # post table data
 class project_post(db.Model):
+    __tablename__ = 'projects'
     Sno = db.Column (db.Integer, primary_key=True)
     title = db.Column(db.String(200), unique=False, nullable=False)
     slug = db.Column(db.String(30), unique=True, nullable=False)
@@ -121,7 +126,7 @@ def Contact_view():
         
         mail.send_message('New massage from ' +Name,
                             sender = Email,
-                            recipients = [params['gmail-user']],  # Recieve mail after submit contact form
+                            recipients = [os.getenv("GMAIL_USER")],  # Recieve mail after submit contact form
                             body = Message + "\n" + Phone +"\n" + Email + "\n" + str(file)
                             
                         ) 
@@ -189,8 +194,8 @@ def admin():
             session['user'] = username
             projects = project_post.query.all()
             return render_template('admin.html', params= params, projects = projects)
-    # else:
-    return render_template("login.html", params = params)
+    else:
+        return render_template("login.html", params = params)
 
 @app.route("/logout")
 def logout():
