@@ -50,8 +50,8 @@ class Contact(db.Model):
     name = db.Column(db.String(50), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=False, nullable=False)
     phone = db.Column(db.String(12), nullable=False)
-    message = db.Column(db.String(250),  nullable=True)
-    file = db.Column(db.String(250),  nullable=True)
+    message = db.Column(db.String(300),  nullable=True)
+    file = db.Column(db.String(),  nullable=True)
     date = db.Column(db.DateTime )
 
 # post table data
@@ -59,7 +59,7 @@ class project_post(db.Model):
     Sno = db.Column (db.Integer, primary_key=True)
     title = db.Column(db.String(200), unique=False, nullable=False)
     slug = db.Column(db.String(30), unique=True, nullable=False)
-    img_file = db.Column(db.String(250), unique=False, nullable=False)
+    img_file = db.Column(db.String(), unique=False, nullable=False)
     content = db.Column(db.Text(),  nullable=False)
     date = db.Column(db.DateTime )
 
@@ -89,16 +89,10 @@ def Contact_view():
         Name = request.form.get('name')
         Email = request.form.get('email')
         Phone = request.form.get('phone')
-        Message = request.form.get('message')
-        # File = request.form.get('file')
-        
+        Message = request.form.get('message')       
         file = request.form.get('file')
-        # global fname
-        if file:
-            flash('Thanks For Contacting Me, I will Get Back to You Soon. file= {}'.format(file), 'success')
         
-        else:
-            flash('Thanks For Contacting Me, I will Get Back to You Soon.', 'success')
+        flash('Thanks For Contacting Me, I will Get Back to You Soon.', 'success')
 
         entry = Contact(name = Name, email = Email, phone = Phone, message = Message, file = file,  date = datetime.now())
         db.session.add(entry)
@@ -107,7 +101,7 @@ def Contact_view():
         mail.send_message('New massage from ' +Name,
                             sender = Email,
                             recipients = [os.getenv("GMAIL_USER")],  # Recieve mail after submit contact form
-                            body = Message + "\n" + Phone +"\n" + Email + "\n" + str(file)
+                            body = Message + "\n" + Phone +"\n" + Email + "\n" + file
                             
                         ) 
         
