@@ -33,7 +33,9 @@ mail = Mail(app)
 if(local_server=='dev'):
     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
 else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+    prodURI = os.getenv("DATABASE_URL")
+    prodURI = prodURI.replace("postgres://", "postgresql://")
+    app.config['SQLALCHEMY_DATABASE_URI'] = prodURI
     app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 
 
