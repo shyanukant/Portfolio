@@ -4,10 +4,12 @@ from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail   # send mail using flsk mail for more https://pythonhosted.org/Flask-Mail/
 from dotenv import load_dotenv
+from pathlib import Path
 import json
 import os 
 
-load_dotenv()
+env_path = Path('.', '.env')
+load_dotenv(dotenv_path=env_path)
 
 # add database 
 with open('config.json', 'r') as f:   # open config.json in readind mode
@@ -15,7 +17,7 @@ with open('config.json', 'r') as f:   # open config.json in readind mode
 local_server = 'prod'
 app = Flask(__name__, template_folder='template')
 # set secret key
-# app.secret_key = 'sublesh-roshan'
+app.secret_key = os.getenv("APP_SECRET_KEY")
 # configuring flask mail
 app.config.update(
     MAIL_SERVER = "smtp.gmail.com",
@@ -32,7 +34,7 @@ if(local_server=='dev'):
     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
-app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
+    app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 
 
 app.config['UPLOAD_FOLDER'] = params['upload_location'] # location of contact file

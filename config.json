@@ -12,8 +12,8 @@
         "no-of-project" : 10,
         "login_image" : "login.png",
 
-        "upload_location" : "\\static\\images\\contact_file",
-        "upload_location2" : "\\static\\images\\upload_file"
+        "upload_location" : "static\\images\\contact_file",
+        "upload_location2" : "static\\images\\upload_file"
     }
 
 
