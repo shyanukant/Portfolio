@@ -10,10 +10,7 @@
         "git_url" : "https://www.github.com/Shyanukant",
         
         "no-of-project" : 10,
-        "login_image" : "login.png",
-
-        "upload_location" : "static\\images\\contact_file",
-        "upload_location2" : "static\\images\\upload_file"
+        "login_image" : "login.png"
     }
 
 

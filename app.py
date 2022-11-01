@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect,session
 from datetime import datetime
-from werkzeug.utils import secure_filename
+# from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate 
 from flask_mail import Mail   # send mail using flsk mail for more https://pythonhosted.org/Flask-Mail/
@@ -25,10 +25,8 @@ app.config.update(
     MAIL_PORT = "465",
     MAIL_USE_SSL = True,
     MAIL_ASCII_ATTACHMENTS = True,
-    # MAIL_USERNAME = params['gmail-user'],
     MAIL_USERNAME = os.getenv("GMAIL_USER"),
     MAIL_PASSWORD = os.getenv("GMAIL_PASS")
-    # MAIL_PASSWORD = params['gmail-pass']
 )
 mail = Mail(app)
 if(local_server=='dev'):
@@ -40,12 +38,6 @@ else:
     app.config['SQLALCHEMY_DATABASE_URI'] = prodURI
     app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 
-# data store folder
-app.config['UPLOAD_FOLDER'] = params['upload_location'] # location of contact file
-app.config['UPLOAD_FOLDER2'] = params['upload_location2'] # location of upload file
-#
-# app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000
-ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 ###################################### database table  #################################################
 
@@ -59,7 +51,7 @@ class Contact(db.Model):
     email = db.Column(db.String(120), unique=False, nullable=False)
     phone = db.Column(db.String(12), nullable=False)
     message = db.Column(db.String(250),  nullable=True)
-    file = db.Column(db.String(30),  nullable=True)
+    file = db.Column(db.String(250),  nullable=True)
     date = db.Column(db.DateTime )
 
 # post table data
@@ -67,16 +59,11 @@ class project_post(db.Model):
     Sno = db.Column (db.Integer, primary_key=True)
     title = db.Column(db.String(200), unique=False, nullable=False)
     slug = db.Column(db.String(30), unique=True, nullable=False)
-    img_file = db.Column(db.String(30), unique=True, nullable=False)
+    img_file = db.Column(db.String(250), unique=False, nullable=False)
     content = db.Column(db.Text(),  nullable=False)
     date = db.Column(db.DateTime )
 
 ###################################### pages  #################################################
-
-# check submit file is currect or not
-def allowed_file(fname): 
-    return '.' in fname and fname.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
 
 ###################################### ##########  #################################################
 ###################################### main pages  #################################################
@@ -105,20 +92,15 @@ def Contact_view():
         Message = request.form.get('message')
         # File = request.form.get('file')
         
-        file = request.files.get('file')
+        file = request.form.get('file')
         # global fname
-        if file and allowed_file(file.filename):
-            
-            fname = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], fname ))
-            flash('Thanks For Contacting Me, I will Get Back to You Soon. file= {}'.format(fname), 'success')
-        elif file.filename== '':
-            flash('Thanks For Contacting Me, I will Get Back to You Soon.', 'success')
-        else:
-            flash('Inavalid File, Only txt, pdf, png , jpg, jpeg, gif are Valid', 'error')
-
+        if file:
+            flash('Thanks For Contacting Me, I will Get Back to You Soon. file= {}'.format(file), 'success')
         
-        entry = Contact(name = Name, email = Email, phone = Phone, message = Message, file = file.filename,  date = datetime.now())
+        else:
+            flash('Thanks For Contacting Me, I will Get Back to You Soon.', 'success')
+
+        entry = Contact(name = Name, email = Email, phone = Phone, message = Message, file = file,  date = datetime.now())
         db.session.add(entry)
         db.session.commit()
         
@@ -166,14 +148,14 @@ def edit(sno):
         project = project_post.query.filter_by(Sno = sno).first()
         return render_template('edit.html', params=params, project = project, sno = sno)
 
-@app.route("/uploader", methods = ['GET', 'POST'])
-def uploader():
-    if 'user' in session and session['user']== os.getenv("ADMIN_USER"):
-        if request.method == 'POST':
-            f = request.files['file']
-            f.save(os.path.join(app.config['UPLOAD_FOLDER2'], secure_filename(f.filename) )) # save upload file in location with file name
-            # flash('Upload Succesfully, file= {}'.format(f), 'success')
-            return redirect("/admin")
+# @app.route("/uploader", methods = ['GET', 'POST'])
+# def uploader():
+#     if 'user' in session and session['user']== os.getenv("ADMIN_USER"):
+#         if request.method == 'POST':
+#             f = request.files['file']
+#             f.save(os.path.join(app.config['UPLOAD_FOLDER2'], secure_filename(f.filename) )) # save upload file in location with file name
+#             # flash('Upload Succesfully, file= {}'.format(f), 'success')
+#             return redirect("/admin")
 
 @app.route("/admin", methods = ['GET', 'POST'])
 def admin():

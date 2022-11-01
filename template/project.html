@@ -2,7 +2,8 @@
 {% block body %}
 <!-- {% set fname = 'images/' + project.img_file %} -->
 <div class="intro-blogcontainer">
-    <div class="phead" style="background-image: url(/static/images/{{project.img_file}});">
+    <!-- <div class="phead" style="background-image: url(/static/images/{{project.img_file}});"> -->
+    <div class="phead" style="background-image: url({{project.img_file}});">
         
         <h2 class="f-design3">{{ project.title }}</h2>
         <h4 class="para">Here is Sub-Title</h4>
