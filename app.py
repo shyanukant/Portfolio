@@ -54,7 +54,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 # contact form table data
 class Contact(db.Model):
-    __tablename__ = 'contact'
     Sno = db.Column (db.Integer, primary_key=True)
     name = db.Column(db.String(50), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=False, nullable=False)
@@ -65,7 +64,6 @@ class Contact(db.Model):
 
 # post table data
 class project_post(db.Model):
-    __tablename__ = 'projects'
     Sno = db.Column (db.Integer, primary_key=True)
     title = db.Column(db.String(200), unique=False, nullable=False)
     slug = db.Column(db.String(30), unique=True, nullable=False)
@@ -211,5 +209,5 @@ def delete(sno):
     return redirect('/admin')
 
 if __name__ == "__main__":
-    # app.run(port=8000)
-    app.run(debug=True, port=8000)
+    app.run(port=8000)
+    # app.run(debug=True, port=8000)
