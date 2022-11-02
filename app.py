@@ -91,18 +91,18 @@ def Contact_view():
         Email = request.form.get('email')
         Phone = request.form.get('phone')
         Message = request.form.get('message')       
-        file = request.form.get('file')
+        File = request.form.get('file')
         
         flash('Thanks For Contacting Me, I will Get Back to You Soon.', 'success')
 
-        entry = Contact(name = Name, email = Email, phone = Phone, message = Message, file = file,  date = datetime.now())
+        entry = Contact(name = Name, email = Email, phone = Phone, message = Message, file = File,  date = datetime.now())
         db.session.add(entry)
         db.session.commit()
         
         mail.send_message('New massage from ' +Name,
                             sender = Email,
                             recipients = [os.getenv("GMAIL_USER")],  # Recieve mail after submit contact form
-                            body = Message + "\n" + Phone +"\n" + Email + "\n" + file
+                            body = Message + "\n" + Phone +"\n" + Email + "\n" + File
                             
                         ) 
         
@@ -122,11 +122,12 @@ def edit(sno):
             title = request.form.get('title')
             slug = request.form.get('slug')
             content = request.form.get('content')
+            link = request.form.get('prodLink')
             image = request.form.get('image')
             date = datetime.now()
 
             if sno == '0' : #if serial no is 0 then Add new post
-                project = project_post(title = title, slug = slug, content = content, img_file = image, date = date)
+                project = project_post(title = title, slug = slug, content = content, project_link=link, img_file = image, date = date)
                 db.session.add(project)
                 db.session.commit()
 
@@ -135,6 +136,7 @@ def edit(sno):
                 project.title = title
                 project.slug = slug
                 project.content = content
+                project.project_link = link
                 project.img_file = image
                 project.date = date
 
