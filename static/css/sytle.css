@@ -184,7 +184,6 @@ form{
 .f-container{
     position: relative;
     background: #000;
-    height: 15vh;
     display: flex;
     justify-content: center;
     margin-top: auto;
