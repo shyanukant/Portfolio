@@ -99,6 +99,10 @@ button{
 /* .postbutton{ */
     /* align-content: center; */
 /* } */
+.projectbutton{
+    margin-top: 6vh;
+    margin-left: 4vw;
+}
 
 .mypic img{
     width: 350px;
@@ -126,6 +130,13 @@ button{
     width: 300px;
     height: 300px;
 }
+.ct-box{
+    padding: 3vw;
+}
+.ct-img{
+    width: 70vw;
+}
+
 .contactform{
     padding: 16vh 0 0 8vw;
     font-size: 0.7em;
@@ -181,11 +192,17 @@ form{
 }
 .phead{
     height: 30vh;
-    
-   
-   
-   
+}   
+.nft{
+    margin: 0 10px;
 }
+.nftPop{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+   
+
 .social-link{
     /* background: rgb(134, 34, 34); */
     color: var(--color-3);
@@ -194,7 +211,6 @@ form{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding:25px 0px 0;
 }
 .social{
     position: relative;

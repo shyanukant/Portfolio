@@ -35,6 +35,12 @@ button:hover{
     color: var(--color-4);
 
 }
+.nftPop::before,
+.nftPop::after{
+    content: "";
+    position: absolute;
+    transition: .3s linear;
+}
 .social::before,
 .social::after{
     content: "";
@@ -66,6 +72,12 @@ button:hover{
 }
 .git:hover::after{
     color: aqua;
+}
+.nftPop:hover .iconName{
+    top: -30px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
 }
 .social:hover .iconName{
     top: -30px;

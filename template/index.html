@@ -8,10 +8,9 @@
                 <div class="f-size-1">Hello I am </div>
                 <div class="f-size-1">Shyanukant Rathi</div>
                 <div class="f-size-2">CS Enthusiastic</div>
-                <div class="aboutmore">I am a Beginner Developer, Designer with Computer science degree. Passionate
-                    about upcoming technology and love to learn and explore.</div>
+                <div class="aboutmore">I am a Beginner Developer, Designer and also know about machine learning and data science. And I am learning web3.0 from Alchemy which is an open-source web3.0 community. </div>
                 <div class="buttons">
-                    <a href="http://shyanukant.github.io"><button>My CV</button></a>
+                    <a href="http://shyanukant.github.io" target="_blank"><button>My CV</button></a>
                     <a href="/contact"><button>Contact Me</button></a>
                 </div>
             </div>
@@ -19,13 +18,23 @@
                 <img src="{{url_for('static', filename='images/shyanukant.png')}}" alt="shyanukant">
             </div>
         </div>
+        <!-- CERTIFICATES -->
+        <hr class="m-auto">
+        <h2 class="font-design">CERTIFICATES</h2>
+        <div class="myproject">
+            {% for photo in params.certificates %}
+            <div class="ct-box">
+                <img class="ct-img" src="static/images/certificate/{{photo}}" alt="">
+            </div>
+            {% endfor %}
+        </div>
+        <!-- PROJECT -->
         <hr class="m-auto">
         <h2 class="font-design">PROJECT</h2>
         <div class="myproject">
             {% for project in projects %}
             <!-- {% set fname = 'images/' + project.img_file %} -->
             <div class="p-detail">
-                <!-- <a  href="/project/{{project.slug}}"><img class="p-img" src="{{url_for('static', filename=fname)}}" alt=""></a> -->
                 <a  href="/project/{{project.slug}}"><img class="p-img" src="{{project.img_file}}" alt=""></a>
                 <a href="/project/{{project.slug}}" class="f-design1"><h3 >{{project.title}}</h3></a>
                 <a href="/project/{{project.slug}}" class="f-design2"><p> {{project.content[0:50]}}...
