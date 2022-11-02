@@ -102,7 +102,7 @@ def Contact_view():
         mail.send_message('New massage from ' +Name,
                             sender = Email,
                             recipients = [os.getenv("GMAIL_USER")],  # Recieve mail after submit contact form
-                            body = Message + "\n" + Phone +"\n" + Email + "\n" + File
+                            body = Message + "\n" + Phone +"\n" + Email + "\n" + str(File)
                             
                         ) 
         
