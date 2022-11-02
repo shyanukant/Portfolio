@@ -119,6 +119,9 @@
     
 }
 @media (max-width: 400px){
+    .f-size-1{
+        font-size: 2.4em;
+    }
     .p-detail{
         width: 250px;
         height: 350px;
