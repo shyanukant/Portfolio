@@ -61,7 +61,7 @@ class project_post(db.Model):
     slug = db.Column(db.String(30), unique=True, nullable=False)
     img_file = db.Column(db.String(500), unique=False, nullable=False)
     content = db.Column(db.Text(),  nullable=False)
-    project_link = db.Column(db.String(50),  nullable=False)
+    project_link = db.Column(db.String(50),  nullable=True)
     date = db.Column(db.DateTime )
 
 ###################################### pages  #################################################
