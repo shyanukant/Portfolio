@@ -37,7 +37,7 @@
             <div class="p-detail">
                 <a  href="/project/{{project.slug}}"><img class="p-img" src="{{project.img_file}}" alt=""></a>
                 <a href="/project/{{project.slug}}" class="f-design1"><h3 >{{project.title}}</h3></a>
-                <a href="/project/{{project.slug}}" class="f-design2"><p> {{project.content[0:50]}}...
+                <a href="/project/{{project.slug}}" class="f-design2"><p> {{project.content[0:50]|safe}}...
                 </p></a>
             </div>
             {% endfor %}

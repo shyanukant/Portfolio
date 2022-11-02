@@ -9,6 +9,9 @@
     --color-3:white;
     --color-4:black;
 }
+.small-box{
+    width: 40vw;
+}
 
 .s-height{
     width: 4vh;

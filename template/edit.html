@@ -1,50 +1,72 @@
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/sytle.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'css/reponsive.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'css/effect.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'css/utils.css') }}">
-
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/sytle.css') }}">
 </head>
 
 <body>
     <main>
-        
+
         <a href="/admin"><button>Dashboard Home</button></a>
         <a href="/logout"><button>LogOut</button></a>
         <div class="dashboard">
-            
             <h1 class="f-design1 ">Add / Edit Post</h1>
-            
             <form action="/edit/{{sno}}" method="post">
                 <div class="form-fill t-b-padding">
                     <label for="title" class="f-design2 f-size-3">Title </label>
-                    <input type="text" class="form-control l-width s-height" name="title" value="{{project.title}}">
+                    <input type="text" class="form-control  l-width s-height" name="title" value="{{project.title}}">
                 </div>
                 <div class="form-fill t-b-padding">
                     <label for="postSlug" class="f-design2 f-size-3">Slug </label>
-                    <input type="text" class="form-control l-width s-height" name="slug" value="{{project.slug}}">
+                    <input type="text" class="form-control  l-width s-height" name="slug" value="{{project.slug}}">
                 </div>
                 <div class="form-fill t-b-padding">
                     <label for="content" class="f-design2 f-size-3">Content</label>
-                    <textarea class="form-control-m l-width l-height" name="content">{{project.content}}</textarea>
+                    <textarea class="form-control l-width l-height" id="summernote"
+                        name="content">{{project.content}}</textarea>
                 </div>
                 <div class="form-fill t-b-padding">
                     <label for="link" class="f-design2 f-size-3">Project Link</label>
-                    <input type="url" class="form-control" name="prodLink" value="{{project.project_link}}"> 
-                    
+                    <input type="url" class="form-control " name="prodLink" value="{{project.project_link}}">
+
                 </div>
                 <div class="form-fill t-b-padding">
                     <label for="imgaeUpload" class="f-design2 f-size-3">Image File</label>
-                    <input type="url" class="form-control" name="image" value="{{project.img_file}}"> 
-                    
+                    <input type="url" class="form-control " name="image" value="{{project.img_file}}">
+
                 </div>
                 <br><br>
                 <button type="submit" class="submit-btn">Submit</button>
             </form>
         </div>
     </main>
-
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Hello stand alone ui',
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    </script>
 </body>
+
+</html>
