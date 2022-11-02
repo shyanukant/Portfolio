@@ -51,7 +51,7 @@ class Contact(db.Model):
     email = db.Column(db.String(120), unique=False, nullable=False)
     phone = db.Column(db.String(12), nullable=False)
     message = db.Column(db.String(300),  nullable=True)
-    file = db.Column(db.String(),  nullable=True)
+    file = db.Column(db.String(500),  nullable=True)
     date = db.Column(db.DateTime )
 
 # post table data
@@ -59,8 +59,9 @@ class project_post(db.Model):
     Sno = db.Column (db.Integer, primary_key=True)
     title = db.Column(db.String(200), unique=False, nullable=False)
     slug = db.Column(db.String(30), unique=True, nullable=False)
-    img_file = db.Column(db.String(), unique=False, nullable=False)
+    img_file = db.Column(db.String(500), unique=False, nullable=False)
     content = db.Column(db.Text(),  nullable=False)
+    project_link = db.Column(db.String(50),  nullable=False)
     date = db.Column(db.DateTime )
 
 ###################################### pages  #################################################
