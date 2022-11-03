@@ -22,20 +22,24 @@
     </title>
 </head>
 <header class="container">
-    <div class="headerbar heardergo">
-        <nav>
-            <ul class="head-form">
+    <!-- <div class="menubar" id="toggle"></div> -->
+    <div id="toggle"></div>
+    <div id="headerbar">
+    <!-- <div class="headerbar heardergo"> -->
+        <!-- <nav> -->
+            <ul>
                 <li><a class="effect shape1" href="/"> HOME </a></li>
                 <!-- <li><a href="/Services.html"> Services</a></li> -->
                 <li><a class="effect shape3" href="/contact"> CONTACT ME</a></li>
             </ul>
-        </nav>
+        <!-- </nav> -->
     </div>
-    <div class="menubar">
-        <img class="open" src="{{url_for('static', filename='images/open.png')}}" alt="">
-        <img class="close" src="{{url_for('static', filename='images/close.png')}}" alt="">
-    </div>
-</header>
+    <!-- <div class="menubar"> -->
+        <!-- <div id="toggle"></div> -->
+        <!-- <img class="open" src="{{url_for('static', filename='images/open.png')}}" alt=""> -->
+        <!-- <img class="close" src="{{url_for('static', filename='images/close.png')}}" alt=""> -->
+    <!-- </div> -->
+</header> 
 
 
 {% block body%} {% endblock %}

@@ -35,16 +35,72 @@
    .effect:hover::before{
        transition: none;
    }
-    .headerbar{
-        position:absolute;
-        background-color:var(--color-2);
-        width: 185px;
+   #toggle{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+#toggle::before{
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 2px;
+    background: var(--color-2);
+    transform: translateY(-5px);
+    transition: 0.2s;
+}
+#toggle::after{
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 2px;
+    background: var(--color-2);
+    transform: translateY(5px);
+    transition: 0.2s;
+}
+
+#toggle.active::before{
+    background: black;
+    transform: translateY(0px) rotate(45deg);
+}
+#toggle.active::after{
+    background: black;
+    transform: translateY(0px) rotate(-45deg);
+}
+
+    #headerbar{
+        position:fixed;
+        top: 0;
+        left: -200px;
+        width: 200px;
+        /* right: 60px;  */
         height: 100vh;
-        transition: transform 0.3s ease-in;
+        background-color:var(--color-2);
+        transition: .2s ease-in;
         align-items: baseline;
+        padding: 0;
     }
-    .headerbar nav{
-        padding: 45px ;
+    #headerbar ul{
+        position: relative;
+        margin-top: 50px;
+        /* padding: 45px ; */
+        overflow: hidden;
+        display: block;
+    }
+    
+    #headerbar ul li a:hover{
+        color: black;
+    }
+    #headerbar ul li a{
+        color: var(--color-3);
+    }
+    .active#headerbar{
+        left: 0;
     }
     .menubar{
         position: absolute;
@@ -53,14 +109,14 @@
         left: 10px;
         visibility: visible;
     }
-    .headerbargo{
+    #headerbargo{
         transform: translate(-275px,0);
         position: absolute;
     }
     .shape3::before{
         width: 0;
     }
-  
+   
     .open{
         width: 25px;
         padding: 7px;
@@ -138,7 +194,7 @@
         width: 250px;
         height: 350px;
     }
-    .p-img{
+    .p-detail .p-img{
         width: 250px;
         height: 250px;
     }

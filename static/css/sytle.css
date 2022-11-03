@@ -19,7 +19,7 @@ body{
     position: fixed;
     width: 100%;
 }
-.headerbar{
+#headerbar{
     background: rgb(5, 5, 5);
     height: 12vh;
     padding: 9px 28px;
@@ -27,27 +27,30 @@ body{
     justify-content: center;
     align-items: center;
 }
-.head-form{
+#headerbar ul{
     list-style: none;
     display: flex;
     
 }
-li{
+#headerbar ul li{
     list-style: none;
     font-size: 1.5em;
     margin: 30px;
 }
 
-li a{
+#headerbar ul li a{
     text-decoration: none;
     color: var(--color-2);
     font-family: var(--font2);
 }
-
+#headerbar ul li a:hover{
+    color: var(--color-3);
+}
 
 .menubar{
     visibility: hidden;
 }
+
 main{
     
     color: var(--color-3);
