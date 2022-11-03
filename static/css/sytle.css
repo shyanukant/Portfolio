@@ -142,7 +142,9 @@ button{
     padding: 16vh 0 0 8vw;
     font-size: 0.7em;
 }
-
+.mc-left{
+    margin-left: 6vw;
+}
 form{
     margin: 0 9vw;
 }
@@ -159,7 +161,7 @@ form{
     font-size: 15px;
 }
 .form-control-m{
-    width: 40vw;
+    /* width: 40vw; */
     height: 12vh;
     border-radius: 13px;
     padding: 9px;

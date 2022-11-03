@@ -1,5 +1,5 @@
-console.log("Script Running...")
-document.querySelector('.close').style.display = 'none';
+// console.log("Script Running...")
+document.querySelector('.close').style.display = 'visible';
 document.querySelector('.menubar').addEventListener("click",()=>{
     document.querySelector('.headerbar').classList.toggle('headerbargo');
     if(document.querySelector('.headerbar').classList.contains('headerbargo')){
