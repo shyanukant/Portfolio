@@ -1,25 +1,29 @@
-*{
+* {
     margin: 0;
     padding: 0;
 
 }
-html{
+
+html {
     height: 100%;
 }
-body{
-    background-color:rgba(0, 0, 0, 0.92);
+
+body {
+    background-color: rgba(0, 0, 0, 0.92);
     min-height: 100vh;
     min-height: 100%;
     display: flex;
     flex-direction: column;
 }
-.container{
-    background: rgb(5, 5, 5);   
+
+.container {
+    background: rgb(5, 5, 5);
     height: 15px;
     position: fixed;
     width: 100%;
 }
-#headerbar{
+
+#headerbar {
     background: rgb(5, 5, 5);
     height: 12vh;
     padding: 9px 28px;
@@ -27,32 +31,35 @@ body{
     justify-content: center;
     align-items: center;
 }
-#headerbar ul{
+
+#headerbar ul {
     list-style: none;
     display: flex;
-    
+
 }
-#headerbar ul li{
+
+#headerbar ul li {
     list-style: none;
     font-size: 1.5em;
     margin: 30px;
 }
 
-#headerbar ul li a{
+#headerbar ul li a {
     text-decoration: none;
     color: var(--color-2);
     font-family: var(--font2);
 }
-#headerbar ul li a:hover{
+
+#headerbar ul li a:hover {
     color: var(--color-3);
 }
 
-.menubar{
+.menubar {
     visibility: hidden;
 }
 
-main{
-    
+main {
+
     color: var(--color-3);
     padding: 25px;
     /* height: calc(100vh - 15vh - 15vh); */
@@ -60,7 +67,8 @@ main{
     /* overflow: auto; */
     /* background-color: red; */
 }
-.infocontainer{
+
+.infocontainer {
     /* background-color: #fff; */
     width: 80vw;
     height: 50vh;
@@ -69,24 +77,26 @@ main{
     justify-content: space-around;
     /* flex-wrap: wrap; */
 }
-.myinfo{
+
+.myinfo {
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 43vw;
 }
 
-.aboutmore{
+.aboutmore {
     font-size: 1.3em;
     font-family: var(--font1);
     font-weight: bold;
     margin-top: 23px;
 }
-.buttons{
+
+.buttons {
     margin-top: 28px;
 }
- 
-button{
+
+button {
     padding: 17px;
     border-radius: 21px;
     color: var(--color-2);
@@ -99,27 +109,38 @@ button{
     border: 3px solid var(--color-2);
     border-style: outset;
 }
+
 /* .postbutton{ */
-    /* align-content: center; */
+/* align-content: center; */
 /* } */
-.projectbutton{
+.projectbutton {
     margin-top: 6vh;
     margin-left: 4vw;
 }
 
-.mypic img{
+.mypic img {
     width: 300px;
     /* border:3px solid black; */
     /* border-radius: 28px; */
 }
-.myproject{
+
+.myproject {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     /* background-color: rgb(13, 219, 58); */
 }
-.p-detail{
+
+.pd-container {
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.p-detail {
     display: flex;
     flex-direction: column;
     /* background-color: red; */
@@ -127,43 +148,49 @@ button{
     padding: 13px;
     width: 300px;
     height: 400px;
-    
+
 }
-.p-detail
-.p-img{
+
+.p-detail .p-img {
     width: 300px;
     height: 300px;
 }
-.ct-box{
+
+.ct-box {
     padding: 3vw;
 }
-.ct-img{
+
+.ct-img {
     width: 70vw;
 }
 
-.contactform{
+.contactform {
     padding: 16vh 0 0 8vw;
     font-size: 0.7em;
 }
-.mc-left{
+
+.mc-left {
     margin-left: 6vw;
 }
-form{
+
+form {
     margin: 0 9vw;
 }
-.form-fill{
+
+.form-fill {
     display: flex;
     flex-direction: column;
 }
 
-.form-control{
+.form-control {
     /* height: 2vh; */
     border-radius: 13px;
     padding: 9px;
     margin: 6px 0 0 0;
     font-size: 15px;
 }
-.form-control-m{
+
+.form-control-m {
     /* width: 40vw; */
     height: 12vh;
     border-radius: 13px;
@@ -172,43 +199,49 @@ form{
     font-size: 15px;
 }
 
-.intro-blogcontainer{
+.intro-blogcontainer {
     padding: 142px 0 24px 110px;
     display: flex;
     flex-direction: column;
     width: 82vw;
     /* background: white; */
 }
-.data{
-        padding: 24px;
-        color: var(--color-3);
-}
-.para{
-    padding:21px 34px;
+
+.data {
+    padding: 24px;
     color: var(--color-3);
 }
-.f-container{
+
+.para {
+    padding: 21px 34px;
+    color: var(--color-3);
+}
+
+.f-container {
     position: relative;
     background: #000;
     display: flex;
     justify-content: center;
     margin-top: auto;
-    
+
 }
-.phead{
+
+.phead {
     height: 30vh;
-}   
-.nft{
+}
+
+.nft {
     margin: 0 10px;
 }
-.nftPop{
+
+.nftPop {
     position: relative;
     display: flex;
     justify-content: center;
 }
-   
 
-.social-link{
+
+.social-link {
     /* background: rgb(134, 34, 34); */
     color: var(--color-3);
     height: 10vh;
@@ -217,7 +250,8 @@ form{
     justify-content: center;
     align-items: center;
 }
-.social{
+
+.social {
     position: relative;
     border-radius: 50%;
     height: 8vh;
@@ -228,74 +262,91 @@ form{
     flex-direction: column;
     align-items: center;
     margin: 12px;
-   
-}
-.icon{
-    width: 6vw;
-    height: 6vh;
-    margin:2px 0px 5px 0;
 
 }
-.iconName{
+
+.icon {
+    width: 6vw;
+    height: 6vh;
+    margin: 2px 0px 5px 0;
+
+}
+
+.iconName {
     position: absolute;
     top: 0;
     font-size: 14px;
     padding: 5px 8px;
-    border-radius:5px ;
+    border-radius: 5px;
     opacity: 0;
     pointer-events: none;
 }
-.facebook, .instagram, .twitter, .mail, .linkedin, .github{
+
+.facebook,
+.instagram,
+.twitter,
+.mail,
+.linkedin,
+.github {
     fill: var(--color-3);
 }
-.dashboard{
+
+.dashboard {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
-table{
+
+table {
     width: 70vw;
     height: 10vh;
 }
-th, td{
+
+th,
+td {
     border-bottom: 1px solid white;
     padding: 1vh;
-    
+
 }
-.alert{
+
+.alert {
     background-color: rgb(4, 211, 4);
     font-family: var(--font1);
     color: var(--color-3);
-    padding: 8px ;
+    padding: 8px;
     border-left: 10px solid green;
     border-radius: 4px;
     width: 97vw;
     font-size: 1em;
-    text-shadow:1px 1px black;
+    text-shadow: 1px 1px black;
     display: flex;
     justify-content: space-between;
     position: fixed;
     top: 14vh;
 }
 
-.alert-close{
+.alert-close {
     width: 20px;
     cursor: pointer;
     margin: 0 7px -3px 0;
 }
-.show{
-    animation: 0.5s ease-in 0.1s  reverse both running slidein;
+
+.show {
+    animation: 0.5s ease-in 0.1s reverse both running slidein;
 }
+
 @keyframes slidein {
-    100%{
+    100% {
         transform: scale(80%);
     }
-    0%{
+
+    0% {
         transform: scale(98%);
     }
 }
+
 .note-editor .note-editing-area .note-editable {
     outline: none;
     background: white;
