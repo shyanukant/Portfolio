@@ -46,6 +46,9 @@
     margin-top: 18px;
     font-family: var(--font2);
 }
+.fcenter{
+    text-align: center;
+}
 .f-design1{
     color: var(--color-1);
     font-family: var(--font2);
