@@ -9,4 +9,4 @@ flask db migrate -m "initial migration"
 flask db upgrade
 
 # Start Gunicorn
-exec gunicorn --workers=4 --bind 0.0.0.0:8000 app:app
+exec gunicorn --workers=4 --bind 0.0.0.0:5000 app:app

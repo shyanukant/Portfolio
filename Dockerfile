@@ -22,8 +22,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the app's code to the container
 COPY . .
 
-
-
 # Start and enable SSH
 RUN apt-get update \
     && chmod u+x /app/container.sh
