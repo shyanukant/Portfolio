@@ -22,8 +22,15 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the rest of the app's code to the container
 COPY . .
 
-# Expose the port your app will run on
-EXPOSE $PORT
+COPY sshd_config /etc/ssh/
 
-# Command to start the app
-CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT app:app
+# Start and enable SSH
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends dialog \
+    && apt-get install -y --no-install-recommends openssh-server \
+    && echo "root:Docker!" | chpasswd \
+    && chmod u+x /app/init_container.sh
+
+EXPOSE 8000 2222
+
+ENTRYPOINT [ "/app/container.sh" ] 
