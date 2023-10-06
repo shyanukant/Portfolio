@@ -26,6 +26,6 @@ COPY . .
 RUN apt-get update \
     && chmod u+x /app/container.sh
 
-EXPOSE 8000
+EXPOSE 5000
 
 ENTRYPOINT [ "/app/container.sh" ] 
