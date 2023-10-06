@@ -4,25 +4,24 @@ This portfolio website is created using Flask Framework, HTML, CSS, and Javascri
 
 ## Set up Project
 
-Here's how to setup and run the project locally :
+Here's how to set up and run the project locally :
 
 ### Prerequisites
 
-Here are some pre-requisites that you may require to run the project on your system.
+Here are some prerequisites that you may require to run the project on your system.
 
 Prerequisites:
 
-- Flask (https://flask.palletsprojects.com)
-- SQLalchemy (https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/) .
-- Heruko (https://www.heroku.com/)
-
+- Flask [Documentation](https://flask.palletsprojects.com)
+- SQLalchemy [Documentation](https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/) 
+- Microsoft Azure [Deployment Guide](https://learn.microsoft.com/en-us/training/modules/deploy-run-container-app-service/?source=recommendations)
 ### Install Project
 
-Done with the pre-requisites?
+Done with the prerequisites?
 
 Here are the steps to be taken after that :
 
-1. Fork this repository by clicking on the fork button on the top of this page. This will create a copy of this repository in your account. Then Clone the repository:
+1. Fork this repository by clicking on the fork button at the top of this page. This will create a copy of this repository in your account. Then Clone the repository:
 
 ```bash
 git clone https://github.com/[YOUR USERNAME]/Portfolio.git
@@ -36,7 +35,7 @@ cd Portfolio
 ```bash
 pip install -r requirements.txt
 ```
-Setup Environment Variables by creating .env file and add thease links:
+Setup Environment Variables by creating a .env file and adding these links:
 ```bash
 DATABASE_URL="[DATABASE]"
 APP_SECRET_KEY="[KEY]"
