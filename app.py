@@ -15,7 +15,7 @@ load_dotenv(dotenv_path=env_path)
 # add database 
 with open('config.json', 'r') as f:   # open config.json in readind mode
     params = json.load(f)["parameter"]
-local_server = 'prod'
+local_server = 'dev'
 app = Flask(__name__, template_folder='template')
 # set secret key
 app.secret_key = os.getenv("APP_SECRET_KEY")
@@ -37,6 +37,8 @@ else:
     prodURI = prodURI.replace("postgres://", "postgresql://")
     app.config['SQLALCHEMY_DATABASE_URI'] = prodURI
     app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
+basedir = os.path.abspath(os.path.dirname(__file__))    
+app.config['SQLALCHEMY_MIGRATE_REPO'] = os.path.abspath(os.path.join(basedir, 'migrations'))
 
 
 ###################################### database table  #################################################

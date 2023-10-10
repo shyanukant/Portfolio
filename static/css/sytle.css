@@ -119,10 +119,12 @@ button {
 }
 
 .mypic img {
-    width: 300px;
+    width: 350px;
+    position: relative;
     /* border:3px solid black; */
     /* border-radius: 28px; */
 }
+
 
 .myproject {
     display: flex;

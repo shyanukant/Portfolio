@@ -19,7 +19,8 @@
         "certificates" : ["MachineLearning.png","analyticsVisualization.png","devloperExpereince.png","JavaScriptCertificate.png","BuildPersonalBrandCertificate.png","whiteboardAnimation.jpg","gooleCertificate.png"],
 
         "no-of-project" : 10,
-        "login_image" : "login.png"
+        "login_image" : "login.png",
+        "local_uri" : "sqlite:///portfolio.db"
     }
 
 

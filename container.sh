@@ -1,9 +1,6 @@
 #!/bin/sh
 set -e
-
-# Initialize and create an initial migration
-flask db init
-flask db migrate -m "initial migration"
+COPY migrations /app/migrations
 
 # Apply the migration
 flask db upgrade
