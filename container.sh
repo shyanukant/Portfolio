@@ -7,9 +7,6 @@ eval $(printenv | sed -n "s/^\([^=]\+\)=\(.*\)$/export \1=\2/p" | sed 's/"/\\\"/
 echo "Starting SSH ..."
 service ssh start
 
-
-COPY migrations /app/migrations
-
 # Apply the migration
 flask db upgrade
 
