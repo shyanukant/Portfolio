@@ -24,6 +24,8 @@ COPY . .
 
 # Start and enable SSH
 RUN apt-get update \
+    && apt-get install -y --no-install-recommends dialog \
+    && apt-get install -y --no-install-recommends openssh-server \
     && chmod u+x /app/container.sh
 
 EXPOSE 5000
